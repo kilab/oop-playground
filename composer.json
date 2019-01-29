@@ -1,0 +1,18 @@
+{
+    "name": "kilab/oop-playground",
+    "description": "OOP playground to improve programming skills in architecture areas",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paweł Balicki",
+            "email": "pawel@kilab.pl"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "OOP\\": "src/"
+        }
+    }
+}
