@@ -24,7 +24,7 @@ composer install
 ### Run project
 Run using PHP Built-in Web Server:
 ```
-php -S localhost:8080
+cd oop-playground && php -S localhost:8080
 ```
 
 ### Open in web browser
