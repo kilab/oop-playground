@@ -8,6 +8,13 @@ class Person
 {
 
     /**
+     * Location there person is located in this time.
+     *
+     * @var Location
+     */
+    private $currentLocation;
+
+    /**
      * Date of birth our hero.
      *
      * @var DateTime
@@ -50,10 +57,49 @@ class Person
     private $sex;
 
     /**
+     * User identifier to distinguish from other people.
+     *
+     * @var string
+     */
+    private $uuid;
+
+    /**
      * Weight in KG.
      * @var int
      */
     private $weight;
+
+    /**
+     * Person constructor.
+     *
+     * @param string $name
+     */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+        $this->uuid = uniqid('Person_');
+    }
+
+    /**
+     * Get person current location.
+     *
+     * @return Location
+     */
+    public function getCurrentLocation(): Location
+    {
+        return $this->currentLocation;
+    }
+
+    /**
+     * Get person current location.
+     *
+     * @param Location $currentLocation
+     */
+    public function setCurrentLocation(Location $currentLocation): void
+    {
+        $this->currentLocation = $currentLocation;
+        $this->currentLocation->addVisitor($this);
+    }
 
     /**
      * Get date of birth.
@@ -146,16 +192,6 @@ class Person
     }
 
     /**
-     * Set person name.
-     *
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
      * Get person sex.
      *
      * @return string
@@ -173,6 +209,16 @@ class Person
     public function setSex(string $sex): void
     {
         $this->sex = $sex;
+    }
+
+    /**
+     * Get person identifier.
+     *
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
     }
 
     /**
