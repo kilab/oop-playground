@@ -4,6 +4,9 @@ namespace OOP;
 
 require __DIR__ . '/vendor/autoload.php';
 
+define('DISPLAY_METHODS_INFO', false);
+
+// define person object with attributes
 $ourPerson = new Person();
 $ourPerson->setName('Jack');
 $ourPerson->setDateOfBirth(new \DateTime('1990-10-29'));

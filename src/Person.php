@@ -3,7 +3,6 @@
 namespace OOP;
 
 use DateTime;
-use OOP\Person\Attribute\Sex;
 
 class Person
 {
