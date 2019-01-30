@@ -16,6 +16,27 @@ class Person
     private $dateOfBirth;
 
     /**
+     * Person hair color specified by Attribute HairColor class constants.
+     *
+     * @var string
+     */
+    private $hairColor;
+
+    /**
+     * Person hair length specified by Attribute HairLength class constants.
+     *
+     * @var string
+     */
+    private $hairLength;
+
+    /**
+     * Height in CM.
+     *
+     * @var int
+     */
+    private $height;
+
+    /**
      * The name of the person.
      *
      * @var string
@@ -25,9 +46,15 @@ class Person
     /**
      * Person sex specified by Attribute Sex class constants: Sex::MALE, Sex::FEMALE.
      *
-     * @var Sex
+     * @var string
      */
     private $sex;
+
+    /**
+     * Weight in KG.
+     * @var int
+     */
+    private $weight;
 
     /**
      * Get date of birth.
@@ -47,6 +74,66 @@ class Person
     public function setDateOfBirth(DateTime $dateOfBirth): void
     {
         $this->dateOfBirth = $dateOfBirth;
+    }
+
+    /**
+     * Get person hair color.
+     *
+     * @return string
+     */
+    public function getHairColor(): string
+    {
+        return $this->hairColor;
+    }
+
+    /**
+     * Set person hair color (use HairColor class constants).
+     *
+     * @param string $hairColor
+     */
+    public function setHairColor(string $hairColor): void
+    {
+        $this->hairColor = $hairColor;
+    }
+
+    /**
+     * Get person hair length.
+     *
+     * @return string
+     */
+    public function getHairLength(): string
+    {
+        return $this->hairLength;
+    }
+
+    /**
+     * Set person hair length (use HairLength class constants).
+     *
+     * @param string $hairLength
+     */
+    public function setHairLength(string $hairLength): void
+    {
+        $this->hairLength = $hairLength;
+    }
+
+    /**
+     * Get person weight in KG.
+     *
+     * @return int
+     */
+    public function getHeight(): int
+    {
+        return $this->height;
+    }
+
+    /**
+     * Set person weight.
+     *
+     * @param int $height
+     */
+    public function setHeight(int $height): void
+    {
+        $this->height = $height;
     }
 
     /**
@@ -72,9 +159,9 @@ class Person
     /**
      * Get person sex.
      *
-     * @return Sex
+     * @return string
      */
-    public function getSex(): Sex
+    public function getSex(): string
     {
         return $this->sex;
     }
@@ -87,6 +174,26 @@ class Person
     public function setSex(string $sex): void
     {
         $this->sex = $sex;
+    }
+
+    /**
+     * Get person weight in KG.
+     *
+     * @return int
+     */
+    public function getWeight(): int
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Set person weight.
+     *
+     * @param int $weight
+     */
+    public function setWeight(int $weight): void
+    {
+        $this->weight = $weight;
     }
 
 }
