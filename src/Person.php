@@ -241,4 +241,19 @@ class Person
         $this->weight = $weight;
     }
 
+    /**
+     * Go to specified location.
+     *
+     * @param Location $location
+     * @throws \Exception
+     */
+    public function goTo(Location $location): void
+    {
+        if (DISPLAY_METHODS_INFO) {
+            dump(sprintf('GO %s TO THE %s.', $this->getName(), $location->getName()));
+        }
+
+        $this->currentLocation->removeVisitor($this);
+        $this->setCurrentLocation($location);
+    }
 }

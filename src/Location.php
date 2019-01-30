@@ -67,7 +67,7 @@ class Location
     public function addVisitor(Person $visitor): void
     {
         if (DISPLAY_METHODS_INFO) {
-            sprintf('ADD VISITOR %s TO %s.', $visitor->getName(), $this->name);
+            dump(sprintf('ADD VISITOR %s TO %s.', $visitor->getName(), $this->name));
         }
 
         $this->visitors[$visitor->getUuid()] = $visitor;
@@ -81,7 +81,7 @@ class Location
     public function removeVisitor(Person $visitor): void
     {
         if (DISPLAY_METHODS_INFO) {
-            sprintf('REMOVE VISITOR %s FROM %s.', $visitor->getName(), $this->name);
+            dump(sprintf('REMOVE VISITOR %s FROM %s.', $visitor->getName(), $this->name));
         }
 
         if (isset($this->visitors[$visitor->getUuid()])) {

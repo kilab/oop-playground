@@ -4,7 +4,13 @@ namespace OOP;
 
 require __DIR__ . '/vendor/autoload.php';
 
-define('DISPLAY_METHODS_INFO', false);
+// some stuff to nice debug flow
+\Symfony\Component\Debug\Debug::enable();
+\Symfony\Component\Debug\ErrorHandler::register();
+\Symfony\Component\Debug\ExceptionHandler::register();
+
+// specify whether display special info in class methods when are calling
+define('DISPLAY_METHODS_INFO', true);
 
 // define some places
 $market = new Location('Market');
@@ -21,4 +27,9 @@ $ourPerson->setWeight(80);
 $ourPerson->setSex(Person\Attribute\Sex::MALE);
 $ourPerson->setCurrentLocation($market);
 
-var_dump($ourPerson);
+dump($ourPerson, $market);
+
+// move Jack's to the church
+$ourPerson->goTo($church);
+
+dump($ourPerson, $church);

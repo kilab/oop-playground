@@ -9,7 +9,10 @@
             "email": "pawel@kilab.pl"
         }
     ],
-    "require": {},
+  "require-dev": {
+    "symfony/debug": "^4.2",
+    "symfony/var-dumper": "^4.2"
+  },
     "autoload": {
         "psr-4": {
             "OOP\\": "src/"
