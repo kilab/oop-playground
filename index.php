@@ -2,34 +2,54 @@
 
 namespace OOP;
 
+use Symfony\Component\Debug\Debug;
+use Symfony\Component\Debug\ErrorHandler;
+use Symfony\Component\Debug\ExceptionHandler;
+
 require __DIR__ . '/vendor/autoload.php';
 
 // some stuff to nice debug flow
-\Symfony\Component\Debug\Debug::enable();
-\Symfony\Component\Debug\ErrorHandler::register();
-\Symfony\Component\Debug\ExceptionHandler::register();
+Debug::enable();
+ErrorHandler::register();
+ExceptionHandler::register();
 
 // specify whether display special info in class methods when are calling
 define('DISPLAY_METHODS_INFO', true);
 
-// define some places
-$market = new Location('Market');
-$church = new Location('Church');
-$street = new Location('Street');
+if (!isset($_SERVER['PATH_INFO'])) {
+    $pathParts = [];
+} else {
+    $pathParts = explode('/', $_SERVER['PATH_INFO']);
+    unset($pathParts[0]);
+    $pathParts = array_values($pathParts);
+}
 
-// define person object with him attributes and default location - Market
-$ourPerson = new Person('Jack');
-$ourPerson->setDateOfBirth(new \DateTime('1990-10-29'));
-$ourPerson->setHairColor(Person\Attribute\HairColor::BROWN);
-$ourPerson->setHairLength(Person\Attribute\HairLength::SHORT);
-$ourPerson->setHeight(180);
-$ourPerson->setWeight(80);
-$ourPerson->setSex(Person\Attribute\Sex::MALE);
-$ourPerson->setCurrentLocation($market);
+if (isset($pathParts[0])) {
+    $filePath = './src/Controller/' . ucfirst($pathParts[0]) . '.php';
 
-dump($ourPerson, $market);
+    if (!file_exists($filePath)) {
+        http_response_code(404);
+        die("Request file: '$filePath' not found.");
+    } else {
+        include $filePath;
+        die;
+    }
+}
 
-// move Jack's to the church
-$ourPerson->goTo($church);
+$availableControllers = scandir(__DIR__ . '/src/Controller');
 
-dump($ourPerson, $church);
+echo '<h1>Try one of the following entry points:</h1>';
+echo '<ul>';
+
+foreach ($availableControllers as $availableController) {
+    if ($availableController === '.' || $availableController === '..') {
+        continue;
+    }
+
+    $controllerName = basename($availableController, '.php');
+
+    echo "<li><a href=\"/$controllerName\">$controllerName</a></li>";
+}
+
+echo '</ul>';
+die;
